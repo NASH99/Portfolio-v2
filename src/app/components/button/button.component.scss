@@ -1,0 +1,21 @@
+button{
+  font-family: 'Inter-Bold';
+  color: white;
+  padding: 30px;
+  justify-content: center;
+  align-items: center;
+  border-style: none;
+  transition-duration: 300ms;
+  border-radius: 50px;
+  min-width: 350px;
+  max-width: 400px;
+  height: 80px;
+  font-size: 1rem;
+  background: var(--gradient-background);
+}
+button:hover{
+  cursor: pointer;
+  transition-duration: 300ms;
+  background: white;
+  color: red;
+}
