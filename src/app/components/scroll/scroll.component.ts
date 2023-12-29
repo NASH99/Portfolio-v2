@@ -1,14 +1,17 @@
-import { Component, AfterViewInit, ElementRef, Renderer2 } from '@angular/core';
-
+import { Component, AfterViewInit, ElementRef, Renderer2 , Input} from '@angular/core';
+import { CardTechnologiesComponent } from '../card-technologies/card-technologies.component';
 
 @Component({
   selector: 'app-scroll',
   standalone: true,
-  imports: [],
+  imports: [CardTechnologiesComponent],
   templateUrl: './scroll.component.html',
   styleUrl: './scroll.component.scss'
 })
 export class ScrollComponent {
+  @Input() tecnologias: [] | any;
+  @Input() dataDirection: string | any;
+  @Input() dataSpeed: string | any;
 
   constructor(private el: ElementRef, private renderer: Renderer2){}
 
@@ -30,12 +33,14 @@ export class ScrollComponent {
           const duplicatedItem = item.cloneNode(true);
           duplicatedItem.setAttribute("aria-hidden", true);
           scrollerInner.appendChild(duplicatedItem);
-          console.log(duplicatedItem);
+
         });
       });
     }
-    console.log(scrollers);
+
+
   }
+
 
 
 }

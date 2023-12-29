@@ -8,21 +8,26 @@
 
   li{
     padding: 1rem;
-    background-color: var(--card-background);
+    /*background-color: var(--card-background);*/
     border-radius: 8px;
   }
 }
 
 .scroller {
-  max-width: 800px;
+  max-width: 1020px;
   overflow: hidden;
+  @media only screen and (max-width: 1020px) {
+    max-width: 750px;
+  }
+  @media only screen and (max-width: 767px) {
+    max-width: 350px;
+  }
 }
 
 .scroller__inner {
   padding-block: 1rem;
   display:flex;
   flex-wrap: wrap;
-  gap: 1rem;
 }
 
 .scroller[data-animated="true"] {

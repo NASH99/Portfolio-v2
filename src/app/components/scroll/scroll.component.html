@@ -1,23 +1,10 @@
-<div class="scroller" data-direction="left" data-speed="mid">
+<div class="scroller" attr.data-direction="{{dataDirection}}" attr.data-speed="{{dataSpeed}}">
   <ul class="tag-list scroller__inner">
-    <li>HTML</li>
-    <li>CSS</li>
-    <li>JS</li>
-    <li>SSG</li>
-    <li>WEBDEV</li>
-    <li>ANIMATION</li>
-    <li>UI/UX</li>
+    @for (arreglo of tecnologias; track arreglo.TechnologyId) {
+      <li><app-card-technologies tecnologia="{{this.arreglo.TechnologyName}}" img="{{this.arreglo.TechnologyImg}}"></app-card-technologies></li>
+    }
   </ul>
 </div>
 
-<div class="scroller" data-direction="right" data-speed="mid">
-  <ul class="tag-list scroller__inner">
-    <li>HTML</li>
-    <li>CSS</li>
-    <li>JS</li>
-    <li>SSG</li>
-    <li>WEBDEV</li>
-    <li>ANIMATION</li>
-    <li>UI/UX</li>
-  </ul>
-</div>
+
+

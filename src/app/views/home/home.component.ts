@@ -23,7 +23,19 @@ export class HomeComponent {
   public developer: null | Developer = null;
 
   public technologies: [] | any;
-  public technology: null | Technology = null;
+
+  public arregloDeObjetos = [
+    { TechnologyId: 1, TechnologyName: 'Angular', TechnologyImg: '../../../assets/img/tecnologies/angular.png' },
+    { TechnologyId: 2, TechnologyName: 'React', TechnologyImg: '../../../assets/img/tecnologies/react.png' },
+    { TechnologyId: 3, TechnologyName: 'MySql', TechnologyImg: '../../../assets/img/tecnologies/mysql.png' },
+    { TechnologyId: 4, TechnologyName: 'Node JS', TechnologyImg: '../../../assets/img/tecnologies/node.png' },
+    { TechnologyId: 5, TechnologyName: 'Express', TechnologyImg: '../../../assets/img/tecnologies/express.png' },
+    { TechnologyId: 6, TechnologyName: 'JavaScript', TechnologyImg: '../../../assets/img/tecnologies/javascript.png' },
+    { TechnologyId: 7, TechnologyName: 'PostgreSQL', TechnologyImg: '../../../assets/img/tecnologies/postgresql.png' },
+    { TechnologyId: 8, TechnologyName: 'Wordpress', TechnologyImg: '../../../assets/img/tecnologies/wordpress.png' },
+    { TechnologyId: 9, TechnologyName: 'Git', TechnologyImg: '../../../assets/img/tecnologies/git.png' },
+    { TechnologyId: 10, TechnologyName: 'Sass', TechnologyImg: '../../../assets/img/tecnologies/sass.png' }
+  ];
 
   constructor(private http:HttpClient){}
 
@@ -31,8 +43,6 @@ export class HomeComponent {
     this.searchDataDeveloper();
     this.searchDataTechnologies();
   };
-
-
 
   public searchDataDeveloper(): void{
     this.http.get<void>(this.DEVELOPERS_URL).subscribe(
@@ -45,7 +55,7 @@ export class HomeComponent {
           DeveloperNationality: data.DeveloperNationality,
           DeveloperDescriptionShort: data.DeveloperDescriptionShort,
           DeveloperDescriptionLarge: data.DeveloperDescriptionLarge
-        }
+        };
       },
       (error: any) => {
         console.log(error);
@@ -54,13 +64,10 @@ export class HomeComponent {
     )
   }
 
-  //NECESITO CREAR UN ARREGLO DE OBJETOS OBTENIDOS DE LA API Y GUARDARLOS EN UNA VARIABLE LOCAL PARA MOSTARLOS
   public searchDataTechnologies(): void{
     this.http.get<void>(this.TECHNOLOGIES_URL).subscribe(
       (data: any) => {
-        data.forEach( (value: any) =>{
-          this.technologies?.push(value.TechnologyName)
-        })
+        this.technologies = JSON.parse(JSON.stringify(data));
       }
     );
 
